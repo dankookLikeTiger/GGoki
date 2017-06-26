@@ -7,13 +7,32 @@ class PostsController < ApplicationController
     
     # 입력받은 데이터를 실제 DB 저장할 액션.
     def create
-      # puts params
-      @post = Post.new    
-      @post.title = params[:input_title]
-      @post.content = params[:input_content]
-      @post.user = current_user
-      @post.save
-      redirect_to "/posts/show/#{@post.id}"
+       # puts params
+       @post = Post.new    
+       @post.title = params[:input_title]
+       @post.content = params[:input_content]
+      
+       @post.user = current_user
+       
+       uploader= CruduploaderUploader.new
+       
+       fileup= params[:pic]
+       
+       uploader.store!(fileup)
+       
+       @post.image_url = uploader
+       
+       flash[:notice] = "전송되었습니다!"
+       
+
+       @post.save
+       
+       redirect_to "/posts/show/#{@post.id}"
+      
+      
+      
+
+
     end
     
     #모든 포스트들을 보여주는 view
@@ -23,6 +42,7 @@ class PostsController < ApplicationController
    #한개의 포스트를 보여주는 view
     def show
       @post= Post.find(params[:post_id])
+      @comments=Comment.where(post_id: params[:post_id])
     end
     
     def edit

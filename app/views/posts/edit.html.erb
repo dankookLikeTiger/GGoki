@@ -1,9 +1,12 @@
-<h1><%= @post.id %>번 post를 수정하는 화면입니다.</h1>
+<div style="text-align:center">
+<h1><%= @post.id %>번 게시글 수정</h1>
+
 <form action = "/posts/update/<%= @post.id %>" method="post">
     <p>제목</p>
     <input type="text" name="input_title" value="<%= @post.title %>">
     <p>내용</p>
     <input type="text" name="input_content" value="<%= @post.content %>">
-    <p>제출</p>
-    <input type="submit">
+    <p></p>
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit">
 </form>
+</div>

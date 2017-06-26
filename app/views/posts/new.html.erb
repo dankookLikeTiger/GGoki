@@ -1,9 +1,16 @@
-<h1>새로운 post를 입력받을 화면</h1>
-<form action="/posts/create" method="post">
+<div style="text-align:center">
+<h1><새 글 작성></h1>
+<form action="/posts/create" method="post" enctype = "multipart/form-data">
     <p>제목</p>
     <input type="text" name="input_title">
     <p>내용</p>
     <input type="text"name="input_content">
-    <p>제출</p>
+
+<div align="center">
+<input type = "file" name = "pic" accept= "/image/">
+</div>
+<hr>
+    
     <input type="submit">
 </form>
+</div>
